@@ -1,4 +1,7 @@
 package assignments.Ex0;
+
+import java.util.Scanner;
+
 /**
  * This class is a basis for Ex0 (your first assigment),
  * The definition of the Ex0 can be found here: https://docs.google.com/document/d/1UtngN203ttQKf5ackCnXs4UnbAROZWHr/edit?usp=sharing&ouid=113711744349547563645&rtpof=true&sd=true
@@ -6,7 +9,7 @@ package assignments.Ex0;
 
  */
 public class Ex0 {
-    public final static long ID = 123456789;  // Do update your ID here
+    public final static long ID = 323830208;// Do update your ID here
     /**
      * This function checks if n is a prime number.
      * Notes:
@@ -17,6 +20,7 @@ public class Ex0 {
      * @return true if and only if there is no integer (p) within the range of [2,n) which divides n.
      *
      */
+
     public static boolean isPrime(long n) {
         boolean ans = true;
         if(n==2) {ans = true;}
@@ -24,8 +28,10 @@ public class Ex0 {
             if(n<2 || n%2==0) {ans = false;}
         }
         long p = 3;
-        while (ans && p<n) {
-            if(n%p==0) {ans = false;}
+        while (ans && p*p<=n) {
+            if(n%p==0){
+                ans = false;
+            }
             p = p + 2;
         }
         return ans;
