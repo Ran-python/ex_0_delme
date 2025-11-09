@@ -18,6 +18,13 @@ public class r_main {
         }
 
         sc.close();
+
+        //System.out.println(Ex0.getPrimePair(-1, 2));  // 11  (11,13)
+        System.out.println(Ex0.getPrimePair(20, 754));  // 23  (23,29)
+        System.out.println(Ex0.getClosestPrimePair(10, 100));// -1  (n invalid)
+        System.out.println(Ex0.getMthClosestPrimePair(4, 2));  // -1  (n invalid)
+
+
     }
 }
 

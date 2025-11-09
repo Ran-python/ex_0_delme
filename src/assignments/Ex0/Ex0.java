@@ -50,6 +50,16 @@ public class Ex0 {
     public static long getPrimePair(long start, long n) {
         long ans = -1;
         if(n>=2 && n%2==0) {
+
+            long p1 = start;
+
+            while (true){
+                if (isPrime(p1) && isPrime(p1+n)){
+                    ans=p1;
+                    break;
+                }
+                p1++;
+            }
             /// Add your code below ///
 
             /// ////////////////// ///
@@ -70,9 +80,34 @@ public class Ex0 {
     public static long getClosestPrimePair(long start, long n) {
         /// Add your code below ///
         long ans = -1;
+        if(n>=2 && n%2==0) {
+            long p1 = Math.max(2, start);
+            if (p1 > 2 && p1 % 2 == 0) p1++;
+        while (true) {
+            if (isPrime(p1) && isPrime(p1 + n)) {
+                boolean check_if_following = true;
+                for (long i = p1 + 1; i < p1 + n; i++) {
+                    if (isPrime(i)) {
+                        check_if_following = false;
+                        break;
+                    }
+                }
+
+
+                if (check_if_following) {
+                    ans = p1;
+                    break;
+                }
+            }
+
+        if (p1 == 2) p1++;
+        else p1 += 2;;
+            }
+        }
         return ans;
         /// ////////////////// ///
     }
+
 
     /**
      * This function compute the m'th positive integer p1 for which:
@@ -86,16 +121,39 @@ public class Ex0 {
      *
      */
     public static long getMthClosestPrimePair(int m, long n) {
-        if(m<0 | n<0 | n%2!=0) {
-            System.err.println("Invalid input: got m="+m+", n="+n+"  |  m should be >=0 & n should be a positive even integer ");
+        if (m < 0 | n < 0 | n % 2 != 0) {
+            System.err.println("Invalid input: got m=" + m + ", n=" + n + "  |  m should be >=0 & n should be a positive even integer ");
             return -1;
         }
         /// Add your code below ///
 
-        return 2;
-        /// ////////////////// ///
+        long count = 0;
+        long p1 = 2;
+
+        while (true) {
+            if (isPrime(p1) && isPrime(p1 + n)) {
+                boolean check_if_following = true;
+                for (long i = p1 + 1; i < p1 + n; i++) {
+                    if (isPrime(i)) {
+                        check_if_following = false;
+                        break;
+
+                    }
+
+                }
+                if (check_if_following) {
+                    if (count == m) {
+                        return p1;
+                    }
+                    count++;
+
+
+                    /// ////////////////// ///
+                }
+            }
+            if (p1==2)p1++;
+            else p1 +=2;
+        }
     }
-
-    /// //////// Priate Functions - you are welcome to add additional (private) functions below.
-
 }
+/// //////// Priate Functions - you are welcome to add additional (private) functions below.
